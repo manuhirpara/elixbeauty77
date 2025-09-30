@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" runat="server" contentplaceholderid="ContentPlaceHolder2">
-                    <!-- Hero Section -->
+                    <!-- Hero Section bhai -->
     <section id="home" class="hero">
         <div class="hero-video" aria-hidden="true">
             <video class="hero-video-media" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1585386147415-71ef9a79a2f0?w=1200&h=800&fit=crop&crop=center">
