@@ -267,7 +267,8 @@
               <asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true"  CssClass="form-control" style="min-width:150px;" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
       <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
   </asp:DropDownList>
-    <asp:Button ID="Button1" runat="server" Text="View Cart" OnClick="Button1_Click" />
+   <%-- <asp:Button ID="Button1" runat="server" Text="View Cart" OnClick="Button1_Click" />--%>
+    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">View Cart</asp:LinkButton>
     <asp:Label ID="Label4" runat="server" ></asp:Label>
          </section>
          <div class="product-filters">
@@ -299,7 +300,7 @@
                     CommandArgument='<%# Eval("Id") %>' 
                     OnClick="btnViewDetails_Click" />--%>
                 
-                    <asp:LinkButton ID="cmd_atc" runat="server"  CssClass="btn-view-details"  CommandArgument='<%# Eval("Id") %>'>Add to Cart</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" runat="server"  CssClass="btn-view-details" CommandName="cmd_add" CommandArgument='<%# Eval("Id") %>'>Add to Cart</asp:LinkButton>
                     <br />
                    
                     <br>

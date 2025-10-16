@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace elixbeauty7
 {
@@ -23,12 +26,31 @@ namespace elixbeauty7
         int row = 3, p;
         protected void Page_Load(object sender, EventArgs e)
         {
-            getcon();
-            filllist();
-           
+            //getcon();
+            //filllist();
+
+            //if (!IsPostBack)
+            //{
+            //    ViewState["pid"] = 0;
+            //}
             if (!IsPostBack)
             {
-                ViewState["pid"] = 0;
+                ViewState["Id"] = 0;
+                filllist();
+            }
+            if (Session["admin"] != null && Session["admin"].ToString() != "")
+            {
+                getcon();
+                da = new SqlDataAdapter("SELECT * FROM registerr WHERE email = '" + Session["admin"].ToString() + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                string s = ds.Tables[0].Rows[0][1].ToString();
+                Label4.Text = "Welcome :" + s;
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
             }
         }
        
@@ -97,6 +119,32 @@ namespace elixbeauty7
                 int id = Convert.ToInt32(e.CommandArgument);
                 Response.Redirect("ViewDetails.aspx?id=" + id);
             }
+            else if (e.CommandName == "cmd_add")
+            {
+                getcon();
+                da = new SqlDataAdapter("Select * from registerr where email ='" + Session["admin"] + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+
+                int userid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                int prodid = Convert.ToInt32(e.CommandArgument);
+
+                da = new SqlDataAdapter("Select * from Add_productt where Id = '" + prodid + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+
+                string name = ds.Tables[0].Rows[0][2].ToString();
+                string price = ds.Tables[0].Rows[0][3].ToString();
+                string img = ds.Tables[0].Rows[0][5].ToString();
+                string Catagory = ds.Tables[0].Rows[0]["Catagory"].ToString();
+
+                int Quantity = 1;
+
+                cmd = new SqlCommand("INSERT INTO cart_tbl(User_Cart_Id, Prod_cart_Id, Image, Name, Catagory, Price, Quantity) VALUES ('" + userid + "','" + prodid + "','" + img + "','" + name + "','" + Catagory + "','" + price + "','" + Quantity + "')", con);
+
+                cmd.ExecuteNonQuery();
+
+            }
         }
       
       
@@ -108,19 +156,24 @@ namespace elixbeauty7
 
         protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewState["pid"] = 0; // Reset to first page when category changes
-            filllist();
+            //ViewState["pid"] = 0; // Reset to first page when category changes
+            //filllist();
         }
 
         protected void ddlSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewState["pid"] = 0; // Reset to first page when sort changes
-            filllist();
+            //ViewState["pid"] = 0; // Reset to first page when sort changes
+            //filllist();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("viewcart.aspx");
+            //Response.Redirect("viewcart.aspx");
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin/viewcart.aspx");
         }
 
         protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)

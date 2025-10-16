@@ -34,7 +34,7 @@ namespace elixbeauty7
         }
         void Fill()
         {
-            da = new SqlDataAdapter("select * from Add_product where Id='" + Request.QueryString["id"] + "'  ", con);
+            da = new SqlDataAdapter("select * from Add_productt where Id='" + Request.QueryString["id"] + "'  ", con);
             ds = new DataSet();
             da.Fill(ds);
             DataList1.DataSource = ds;
