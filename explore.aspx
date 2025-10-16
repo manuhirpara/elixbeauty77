@@ -247,7 +247,7 @@
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products">
             </div>
-            <div class="explore-filters" id="categoryFilters" aria-label="Category filters"></div>
+         <%--   <div class="explore-filters" id="categoryFilters" aria-label="Category filters"></div>
             <div class="explore-sort">
                 <label for="sortSelect">Sort by</label>
                 <select id="sortSelect" aria-label="Sort products">
@@ -257,17 +257,24 @@
                     <option value="name_asc">Name: A → Z</option>
                     <option value="name_desc">Name: Z → A</option>
                 </select>
-            </div>
+            </div>--%>
+          <%--  <asp:DropDownList ID="ddlSort" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSort_SelectedIndexChanged">
+    <asp:ListItem Text="Name ASC" Value="Name ASC"></asp:ListItem>
+    <asp:ListItem Text="Name DESC" Value="Name DESC"></asp:ListItem>
+    <asp:ListItem Text="Price ASC" Value="Price ASC"></asp:ListItem>
+    <asp:ListItem Text="Price DESC" Value="Price DESC"></asp:ListItem>
+</asp:DropDownList>--%>
+              <asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true"  CssClass="form-control" style="min-width:150px;" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
+      <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
+  </asp:DropDownList>
+    <asp:Button ID="Button1" runat="server" Text="View Cart" OnClick="Button1_Click" />
+    <asp:Label ID="Label4" runat="server" ></asp:Label>
          </section>
          <div class="product-filters">
     
-     <button class="filter-btn" data-category="MAC cosmetic">MAC cosmetic</button>
-     <button class="filter-btn" data-category="mamaearth">mamaearth</button>
-     <button class="filter-btn" data-category="sugar cosmetic">sugar cosmetic</button>
-     <button class="filter-btn" data-category="Nykaa">Nykaa</button>
- </div>
+ 
          
-        <asp:DataList ID="DataList1" runat="server" CellPadding="10" RepeatDirection="Horizontal" CellSpacing="50" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
+        <asp:DataList ID="DataList1" runat="server" CellPadding="10" RepeatDirection="Horizontal" CellSpacing="50" OnSelectedIndexChanged="DataList1_SelectedIndexChanged" OnItemCommand="DataList1_ItemCommand">
             <ItemTemplate>
                 <div class="product-card">
                <%-- <asp:Image ID="Image1" Height="180px" Width="180px" runat="server" ImageUrl='<%# Eval("Image") %>' />
@@ -297,8 +304,14 @@
                    
                     <br>
                    
+                  
+                   
+                           <asp:LinkButton ID="cmd_vd" runat="server"  CssClass="btn-add-cart" CommandName="cmd_view" CommandArgument='<%# Eval("Id") %>'  >View Details</asp:LinkButton>
+                   
+                    <br></br>
+                   
                     </br>
-                    <asp:LinkButton ID="cmd_vd" runat="server"  CssClass="btn-add-cart"  CommandArgument='<%# Eval("Id") %>'>View Details</asp:LinkButton>
+
                     </div>
             </ItemTemplate>
     </asp:DataList>
@@ -310,6 +323,7 @@
 
 </body>
 </html>
+                    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder3">

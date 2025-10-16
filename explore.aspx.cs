@@ -25,7 +25,13 @@ namespace elixbeauty7
         {
             getcon();
             filllist();
+           
+            if (!IsPostBack)
+            {
+                ViewState["pid"] = 0;
+            }
         }
+       
         void getcon()
         {
             con = new SqlConnection(s);
@@ -34,7 +40,7 @@ namespace elixbeauty7
         void filllist()
         {
             getcon();
-            da = new SqlDataAdapter("select * from Add_product", con);
+            da = new SqlDataAdapter("select * from Add_productt", con);
             ds = new DataSet();
             da.Fill(ds);
 
@@ -48,7 +54,7 @@ namespace elixbeauty7
             pg.DataSource = ds.Tables[0].DefaultView;
             DataList1.DataSource = pg;
             DataList1.DataBind();
-
+          
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -84,21 +90,46 @@ namespace elixbeauty7
             filllist();
         }
 
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "cmd_view")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("ViewDetails.aspx?id=" + id);
+            }
+        }
+      
+      
+
+        protected void DataList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewState["pid"] = 0; // Reset to first page when category changes
+            filllist();
+        }
+
+        protected void ddlSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewState["pid"] = 0; // Reset to first page when sort changes
+            filllist();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("viewcart.aspx");
+        }
+
         protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnAddToCart_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        protected void btnViewDetails_Click(object sender, EventArgs e)
         {
             
         }
 
+
+       
 
 
     }

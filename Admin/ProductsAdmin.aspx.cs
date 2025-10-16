@@ -58,9 +58,6 @@ namespace elixbeauty7.Admin
            if (fldimg.HasFile)
            {
                 fnm = "..//Admin/images/" + fldimg.FileName;
-                //Response.Write(Server.MapPath(fnm));
-                //fldimg.SaveAs(Server.MapPath(fnm));
-                //Response.Write("<script>alert('"+fnm+"')</script>");
                 fldimg.SaveAs(Server.MapPath(fnm));
             }
         }
@@ -73,7 +70,7 @@ namespace elixbeauty7.Admin
         void fillgrid()
         {
             getcon();
-            da = new SqlDataAdapter("select * from Add_product", con);
+            da = new SqlDataAdapter("select * from Add_productt", con);
             ds = new DataSet();
             da.Fill(ds);
 
@@ -92,7 +89,7 @@ namespace elixbeauty7.Admin
             {
                 getcon();
                 imgupload();
-                cmd = new SqlCommand("insert into Add_product(Image,Name,Catagory,Price,Discription) values( '" + fnm + "' ,  '" + txtnm.Text + "' , '" + drpct.Text + "','" + txtprice.Text + "','" + txtds.Text + "' )", con);
+                cmd = new SqlCommand("insert into Add_productt(prod_cart_id,Image,Name,Catagory,Price,Discription) values( '" + ViewState["Id"] + "','" + fnm + "' ,  '" + txtnm.Text + "' , '" + drpct.Text + "','" + txtprice.Text + "','" + txtds.Text + "' )", con);
                 cmd.ExecuteNonQuery();
                 clear();
                 fillgrid();
@@ -100,7 +97,7 @@ namespace elixbeauty7.Admin
             }
             else
             {
-                cmd = new SqlCommand("Update Add_product set Image='" + fnm + "',Name='" + txtnm.Text + "',Catagory='" + drpct.Text + "',Price='" + txtprice.Text + "',Discription='" + txtds.Text + "' where Id='" + ViewState["id"] + "'", con);
+                cmd = new SqlCommand("Update Add_productt set Image='" + fnm + "',Name='" + txtnm.Text + "',Catagory='" + drpct.Text + "',Price='" + txtprice.Text + "',Discription='" + txtds.Text + "' where Id='" + ViewState["id"] + "'", con);
                 cmd.ExecuteNonQuery();
                 fillgrid();
                 Button1.Text = "Submit";
@@ -111,7 +108,7 @@ namespace elixbeauty7.Admin
         void select()
         {
             getcon();
-            da = new SqlDataAdapter("select * from Add_product where Id='" + ViewState["id"] + "'", con);
+            da = new SqlDataAdapter("select * from Add_productt where Id='" + ViewState["id"] + "'", con);
 
             ds = new DataSet();
             da.Fill(ds);
@@ -136,7 +133,7 @@ namespace elixbeauty7.Admin
                 getcon();
                 int id = Convert.ToInt32(e.CommandArgument);
                 ViewState["id"] = id;
-                cmd = new SqlCommand("delete from Add_product where Id='" + ViewState["id"] + "'", con);
+                cmd = new SqlCommand("delete from Add_productt where Id='" + ViewState["id"] + "'", con);
                 cmd.ExecuteNonQuery();
                 fillgrid();
             }
