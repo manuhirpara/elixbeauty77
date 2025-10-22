@@ -54,7 +54,18 @@ namespace elixbeauty7.Admin
             if (ds.Tables[0].Rows.Count > 0)
             {
                 int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-                da = new SqlDataAdapter("select *, (Price * Quantity) as Total from cart_tbl where User_Cart_Id = '" + uid + "'", con);
+                //da = new SqlDataAdapter("select *, (Price * Quantity) as Total from cart_tbl where User_Cart_Id = '" + uid + "'", con);
+                //    string query = @"
+                //SELECT *, 
+                //       (TRY_CAST(Price AS DECIMAL(10,2)) * TRY_CAST(Quantity AS INT)) AS Total 
+                //FROM cart_tbl 
+                //WHERE User_Cart_Id = @UserId";
+
+                //    da = new SqlDataAdapter(query, con);
+                //    da.SelectCommand.Parameters.AddWithValue("@UserId", uid);
+                //da = new SqlDataAdapter("SELECT *, (Prod_Price * Prod_Quantity) AS Total FROM cart_tbl WHERE User_Cart_Id = '" + uid + "'", con);
+                da = new SqlDataAdapter("SELECT *, (TRY_CAST(Price AS DECIMAL(10,2)) * Quantity) AS Total FROM cart_tbl WHERE User_Cart_Id = '" + uid + "'", con);
+
                 ds = new DataSet();
                 da.Fill(ds);
 
@@ -101,7 +112,7 @@ namespace elixbeauty7.Admin
                         if (quantity < 1) quantity = 1;
 
                         // ✅ Update cart quantity using your string SQL syntax
-                        cmd = new SqlCommand("Update cart_tbl SET Quantity = '" + quantity + "' where User_Cart_Id = '" + uid + "' AND Prod_cart_Id = '" + prodcartId + "'", con);
+                        cmd = new SqlCommand("Update cart_tbl SET Quantity = '" + quantity + "' where User_Cart_Id = '" + uid + "' AND Prod_cart_Id = '" + prodCartId + "'", con);
                         cmd.ExecuteNonQuery();
                     }
                 }

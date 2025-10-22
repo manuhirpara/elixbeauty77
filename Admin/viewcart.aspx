@@ -1,5 +1,149 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site1Admin.Master" AutoEventWireup="true" CodeBehind="viewcart.aspx.cs" Inherits="elixbeauty7.Admin.viewcart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+}
+
+td img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+input[type="text"], input[type="number"] {
+    width: 70px;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button, input[type="submit"], input[type="button"] {
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #e73370;
+}
+
+.final-total {
+    text-align: right;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.remove-link {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.remove-link:hover {
+    text-decoration: underline;
+    color: #d63031;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        text-align: left;
+        padding: 10px 20px;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    td img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .final-total {
+        text-align: center;
+    }
+ 
+
+}
+   .final-total-label {
+            display: inline-block;
+            background-color: #ffffff;
+            padding: 15px 35px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            color: #ff4081;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 25px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .final-total-label:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .total-center {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+</style>
+
 </asp:Content>
 <asp:Content ID="Content4" runat="server" contentplaceholderid="ContentPlaceHolder1">
                 <!DOCTYPE html>
@@ -17,6 +161,7 @@
 
             <center>
                 <h1>Product Added to cart</h1>
+                </br>
                 <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" DataKeyNames="Prod_cart_Id" OnRowCommand="gvCart_RowCommand">
                     <Columns>
                         <asp:TemplateField HeaderText="Product Image">
@@ -56,9 +201,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                <asp:Button ID="txtUpdateCart" runat="server" Text="update cart" OnClick="txtUpdateCart_Click" />
+                </br>
+                <asp:Button ID="txtUpdateCart" runat="server" Text="Update Cart" OnClick="txtUpdateCart_Click" />
                  <br />
- <asp:Label ID="lblFinalTotal" runat="server" Text="lblFinalTotal"></asp:Label>
+               <div class="total-center">
+ <asp:Label ID="lblFinalTotal" runat="server" CssClass="final-total-label" Text="lblFinalTotal"></asp:Label></div>
                 </center>
           
  </asp:Content>

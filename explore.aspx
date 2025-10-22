@@ -264,9 +264,17 @@
     <asp:ListItem Text="Price ASC" Value="Price ASC"></asp:ListItem>
     <asp:ListItem Text="Price DESC" Value="Price DESC"></asp:ListItem>
 </asp:DropDownList>--%>
-              <asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true"  CssClass="form-control" style="min-width:150px;" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
-      <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
-  </asp:DropDownList>
+              <%--<asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true"  CssClass="form-control" style="min-width:150px;" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
+      <asp:ListItem Text="All Categories" Value="All">
+
+      </asp:ListItem>
+  </asp:DropDownList>--%>
+              <ul class="filters_menu" style="list-style: none; display: flex; gap: 10px; justify-content: center;">
+                  <asp:Button ID="Button1" runat="server" Text="All" OnClick="Button1_Click1" />
+                  <asp:Button ID="Button2" runat="server" Text="MAC cosmetic" OnClick="Button2_Click" />
+                  <asp:Button ID="Button3" runat="server" Text="mamaearth" OnClick="Button3_Click" />
+                  <asp:Button ID="Button4" runat="server" Text="sugar cosmetic" OnClick="Button4_Click" />
+                  <asp:Button ID="Button5" runat="server" Text="Nykaa" OnClick="Button5_Click" />
    <%-- <asp:Button ID="Button1" runat="server" Text="View Cart" OnClick="Button1_Click" />--%>
     <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">View Cart</asp:LinkButton>
     <asp:Label ID="Label4" runat="server" ></asp:Label>
@@ -316,10 +324,17 @@
                     </div>
             </ItemTemplate>
     </asp:DataList>
-     <div class="pagination-container">
+    <%-- <div class="pagination-container">--%>
          <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CssClass="pagination-btn">Previous</asp:LinkButton>
          <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CssClass="pagination-btn">Next</asp:LinkButton>
-     </div>
+       <%-- <asp:LinkButton ID="lnkprevious" runat="server" OnClick="lnkprevious_Click">Previous</asp:LinkButton>--%>
+       <%-- <asp:LinkButton ID="lnknext" runat="server" OnClick="lnknext_Click">Next</asp:LinkButton>--%>
+       <%-- <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click1">Previous</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click1">Next</asp:LinkButton>--%>
+        <%--<asp:Button ID="btnpr" runat="server" Text="Previous" OnClick="btnpr_Click" />
+        <asp:Button ID="btnnxt" runat="server" Text="Next" OnClick="btnnxt_Click" />--%>
+
+     
     </main>
 
 </body>

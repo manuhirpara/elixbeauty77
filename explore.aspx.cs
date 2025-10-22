@@ -26,16 +26,9 @@ namespace elixbeauty7
         int row = 3, p;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //getcon();
-            //filllist();
-
-            //if (!IsPostBack)
-            //{
-            //    ViewState["pid"] = 0;
-            //}
             if (!IsPostBack)
             {
-                ViewState["Id"] = 0;
+                ViewState["pid"] = 0;
                 filllist();
             }
             if (Session["admin"] != null && Session["admin"].ToString() != "")
@@ -53,7 +46,7 @@ namespace elixbeauty7
                 Response.Redirect("login.aspx");
             }
         }
-       
+
         void getcon()
         {
             con = new SqlConnection(s);
@@ -74,26 +67,28 @@ namespace elixbeauty7
             pg.CurrentPageIndex = Convert.ToInt32(ViewState["pid"]);
 
             pg.DataSource = ds.Tables[0].DefaultView;
+           
             DataList1.DataSource = pg;
             DataList1.DataBind();
-          
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+
+
             LinkButton2.Enabled = true;
 
             p += Convert.ToInt32(ViewState["pid"]) - 1;
 
             ViewState["pid"] = Convert.ToInt32(p);
-
+            filllist();
             int temp = row / pg.PageSize;
             if (p == temp)
             {
                 LinkButton1.Enabled = false;
             }
-            filllist();
-        
+            
 
         }
 
@@ -103,13 +98,13 @@ namespace elixbeauty7
             p += Convert.ToInt32(ViewState["pid"]) + 1;
 
             ViewState["pid"] = Convert.ToInt32(p);
-
+            filllist();
             int temp = row / pg.PageSize;
             if (p == temp)
             {
                 LinkButton2.Enabled = false;
             }
-            filllist();
+           
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -133,9 +128,10 @@ namespace elixbeauty7
                 ds = new DataSet();
                 da.Fill(ds);
 
-                string name = ds.Tables[0].Rows[0][2].ToString();
-                string price = ds.Tables[0].Rows[0][3].ToString();
-                string img = ds.Tables[0].Rows[0][5].ToString();
+
+                string name = ds.Tables[0].Rows[0][3].ToString();
+                string price = ds.Tables[0].Rows[0][5].ToString();
+                string img = ds.Tables[0].Rows[0][2].ToString();
                 string Catagory = ds.Tables[0].Rows[0]["Catagory"].ToString();
 
                 int Quantity = 1;
@@ -146,29 +142,18 @@ namespace elixbeauty7
 
             }
         }
-      
-      
+
+
 
         protected void DataList2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ViewState["pid"] = 0; // Reset to first page when category changes
-            //filllist();
-        }
-
-        protected void ddlSort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ViewState["pid"] = 0; // Reset to first page when sort changes
-            //filllist();
-        }
-
+     
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("viewcart.aspx");
+           
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
@@ -176,14 +161,89 @@ namespace elixbeauty7
             Response.Redirect("~/Admin/viewcart.aspx");
         }
 
-        protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void lnkprevious_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        protected void lnknext_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            da = new SqlDataAdapter("SELECT * FROM Add_productt", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            DataList1.DataSource = ds;
+            DataList1.DataBind();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'MAC cosmetic'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            DataList1.DataSource = ds;
+            DataList1.DataBind();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'mamaearth'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            DataList1.DataSource = ds;
+            DataList1.DataBind();
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'sugar cosmetic'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            DataList1.DataSource = ds;
+            DataList1.DataBind();
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'Nykaa'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            DataList1.DataSource = ds;
+            DataList1.DataBind();
+        }
+
+        protected void LinkButton1_Click1(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void LinkButton2_Click1(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void btnpr_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void btnnxt_Click(object sender, EventArgs e)
         {
             
         }
 
+        protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-       
+        }
 
+
+
+    
 
     }
 }
