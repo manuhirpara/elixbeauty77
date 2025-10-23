@@ -197,6 +197,91 @@
     transform: none;
     box-shadow: none;
 }
+.filters_menu {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.filters_menu input[type="submit"],
+.filters_menu button,
+.filters_menu .aspNetButton {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.filters_menu input[type="submit"]:hover,
+.filters_menu button:hover {
+    background-color: #ff6fb4;
+    color: white;
+    border-color: #ff6fb4;
+}
+
+/* 🛒 Special styling for View Cart link */
+.filters_menu a {
+    background-color: #ff6fb4;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(255, 111, 180, 0.4);
+    transition: all 0.3s ease;
+}
+
+.filters_menu a:hover {
+    background-color: #ff3d9a;
+    box-shadow: 0 4px 8px rgba(255, 61, 154, 0.5);
+}
+
+/* 👋 Welcome text */
+.welcome-text {
+    margin-left: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* 🌸 Pagination buttons */
+.pagination-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 25px;
+    margin: 0 8px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover effect */
+.pagination-btn:hover {
+    background-color: #ff6fb4;
+    color: #fff;
+    border-color: #ff6fb4;
+    box-shadow: 0 4px 8px rgba(255, 111, 180, 0.4);
+}
+
+/* Center alignment */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
 
         </style>
 </asp:Content>
@@ -222,17 +307,19 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="WebForm1.aspx" class="nav-link">Home</a></li>
-                <li><a href="Products.aspx" class="nav-link">Products</a></li>
+               <%-- <li><a href="Products.aspx" class="nav-link">Products</a></li>--%>
                 <li><a href="explore.aspx" class="nav-link active">Explore</a></li>
                 <li><a href="about.aspx" class="nav-link">About</a></li>
                 <li><a href="contact.aspx#contact" class="nav-link">Contact</a></li>
             </ul>
                            <%-- <button class="btn-login" onclick="openModal('loginModal')">Login</button>--%>
                 <!-- Login Button -->
-<button class="btn-login" onclick="window.location.href='login.aspx'">Login</button>
+<%--<button class="btn-login" onclick="window.location.href='login.aspx'">Login</button>--%>
 
 <!-- Register Button -->
-<button class="btn-register" onclick="window.location.href='registerruser.aspx'">Register</button>
+<%--<button class="btn-register" onclick="window.location.href='registerruser.aspx'">Register</button>--%>
+           <%-- <asp:Button ID="Button6" button class="btn-login" runat="server" Text="login" />
+            <asp:Button ID="Button7" button class="btn-register"  runat="server" Text="Register" />--%>
         </div>
     </nav>
 
@@ -269,6 +356,7 @@
 
       </asp:ListItem>
   </asp:DropDownList>--%>
+            <form >
               <ul class="filters_menu" style="list-style: none; display: flex; gap: 10px; justify-content: center;">
                   <asp:Button ID="Button1" runat="server" Text="All" OnClick="Button1_Click1" />
                   <asp:Button ID="Button2" runat="server" Text="MAC cosmetic" OnClick="Button2_Click" />
@@ -277,8 +365,10 @@
                   <asp:Button ID="Button5" runat="server" Text="Nykaa" OnClick="Button5_Click" />
    <%-- <asp:Button ID="Button1" runat="server" Text="View Cart" OnClick="Button1_Click" />--%>
     <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">View Cart</asp:LinkButton>
-    <asp:Label ID="Label4" runat="server" ></asp:Label>
+    <asp:Label ID="Label4" runat="server" CssClass="welcome-text" ></asp:Label>
+                  </form>
          </section>
+
          <div class="product-filters">
     
  
@@ -325,8 +415,10 @@
             </ItemTemplate>
     </asp:DataList>
     <%-- <div class="pagination-container">--%>
-         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CssClass="pagination-btn">Previous</asp:LinkButton>
+             <div class="pagination-container">
+         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"  CssClass="pagination-btn">Previous</asp:LinkButton>
          <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CssClass="pagination-btn">Next</asp:LinkButton>
+                 </div>
        <%-- <asp:LinkButton ID="lnkprevious" runat="server" OnClick="lnkprevious_Click">Previous</asp:LinkButton>--%>
        <%-- <asp:LinkButton ID="lnknext" runat="server" OnClick="lnknext_Click">Next</asp:LinkButton>--%>
        <%-- <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click1">Previous</asp:LinkButton>
@@ -364,12 +456,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
                         <li><a href="explore.html">Explore</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="admin.html">Admin</a></li>
-                        <li><a href="admin-dashboard.html" rel="nofollow">Admin Dashboard</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

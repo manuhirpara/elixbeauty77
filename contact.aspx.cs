@@ -20,6 +20,25 @@ namespace elixbeauty7
         protected void Page_Load(object sender, EventArgs e)
         {
             getcon();
+            if (!IsPostBack)
+            {
+                ViewState["pid"] = 0;
+
+            }
+            if (Session["admin"] != null && Session["admin"].ToString() != "")
+            {
+                getcon();
+                da = new SqlDataAdapter("SELECT * FROM registerr WHERE email = '" + Session["admin"].ToString() + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                string s = ds.Tables[0].Rows[0][1].ToString();
+
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
         void getcon()
         {

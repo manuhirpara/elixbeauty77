@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,9 +18,29 @@ namespace elixbeauty7
         SqlDataAdapter da;
         DataSet ds;
         SqlCommand cmd;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             getcon();
+            if (!IsPostBack)
+            {
+                ViewState["pid"] = 0;
+               
+            }
+            if (Session["admin"] != null && Session["admin"].ToString() != "")
+            {
+                getcon();
+                da = new SqlDataAdapter("SELECT * FROM registerr WHERE email = '" + Session["admin"].ToString() + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                string s = ds.Tables[0].Rows[0][1].ToString();
+               
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
         void getcon()
         {
@@ -42,6 +63,11 @@ namespace elixbeauty7
                 cmd.ExecuteNonQuery();
                 clear();
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("explore.aspx");
         }
     }
 }

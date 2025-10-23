@@ -30,7 +30,7 @@
                  <p class="more-text" id="aboutMoreText">
                      Founded with a passion for clean beauty, ElixBeauty partners with ethical suppliers and dermatologists to craft formulas that are both high-performing and gentle. From concept to creation, we obsess over textures, aromas, and results—so your daily rituals feel as luxurious as they are effective.
                  </p>
-                 <button type="button" class="read-more-btn" id="readMoreBtn" aria-expanded="false" aria-controls="aboutMoreText">Read more</button>
+                <%-- <button type="button" class="read-more-btn" id="readMoreBtn" aria-expanded="false" aria-controls="aboutMoreText">Read more</button>--%>
              </div>
              <div class="about-image">
                  <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop&crop=center" alt="Beauty Products">
@@ -58,4 +58,207 @@
                        
  </section>
 </asp:Content>
+
+<asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder1">
+                
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ElixBeauty - Premium Cosmetics</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Header / Navigation -->
+        <header>
+            <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h2>ElixBeauty</h2>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="WebForm1.aspx" class="nav-link">Home</a></li>
+                        
+                        <li><a href="explore.aspx" class="nav-link">Explore</a></li>
+<%--                <li><a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a></li>--%>
+                        <li><a href="about.aspx" class="nav-link">About</a></li>
+                        <li><a href="contact.aspx" class="nav-link">Contact</a></li>
+                        <li><a href="login.aspx" class="nav-link">Login</a></li>
+                        <li><a href="registerruser.aspx" class="nav-link">Register</a></li>
+                    </ul>
+                    <div class="nav-actions">
+               <%-- <button class="btn-login" onclick="openModal('loginModal')">Login</button>--%>
+                <!-- Login Button -->
+<%--<button class="btn-login" onclick="window.location.href='login.aspx'">Login</button>
+
+<!-- Register Button -->
+<button class="btn-register" onclick="window.location.href='registerruser.aspx'">Register</button>--%>
+
+               <%-- <button class="btn-register" onclick="openModal('registerModal')">Register</button>--%>
+                        <div class="cart-icon" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+</asp:Content>
+
+
+<asp:Content ID="Content4" runat="server" contentplaceholderid="ContentPlaceHolder3">
+                   <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>ElixBeauty</h3>
+                    </div>
+                    <p>
+                        Enhancing natural beauty with premium cosmetics</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                       
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                       
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#skincare">Skincare</a></li>
+                        <li><a href="#makeup">Makeup</a></li>
+                        <li><a href="#fragrance">Fragrance</a></li>
+                        <li><a href="#tools">Beauty Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="yearPlaceholder">2024</span> ElixBeauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm" class="auth-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">
+                    Login
+                </button>
+            </form>
+            <p>
+                Don't have an account? <a href="#" onclick="switchModal('loginModal', 'registerModal')">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm" class="auth-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">
+                    Register
+                </button>
+            </form>
+            <p>
+                Already have an account? <a href="#" onclick="switchModal('registerModal', 'loginModal')">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                &times;
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span> <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-content">
+            <span class="close" onclick="closeModal('checkoutModal')">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-section">
+                    <h3>Shipping Information</h3>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Address" required>
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="Postal Code" required>
+                    <input type="text" placeholder="Country" required>
+                </div>
+                <div class="form-section">
+                    <h3>Payment Information</h3>
+                    <input type="text" placeholder="Card Number" required>
+                    <div class="card-details">
+                        <input type="text" placeholder="MM/YY" required>
+                        <input type="text" placeholder="CVV" required>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkoutItems">
+                    </div>
+                    <div class="total-row">
+                        <span>Total:</span> <span id="checkoutTotal">$0.00</span>
+                    </div>
+                </div>
+                <button type="submit" class="place-order-btn">
+                    Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="closeAllModals()">
+    </div>
+
+</body>
+</html>
+
+  </asp:Content>
+
+
 

@@ -23,7 +23,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="WebForm1.aspx">Home</a></li>
-                        <li><a href="Products.aspx">Products</a></li>
+                      <%--  <li><a href="Products.aspx">Products</a></li>--%>
                         <li><a href="explore.aspx">Explore</a></li>
                         <li><a href="about.aspx">About</a></li>
                         <li><a href="contact.aspx">Contact</a></li>
@@ -164,9 +164,10 @@
             <h1>Discover Your Natural Beauty</h1>
             <p>
                 Premium cosmetics that enhance your natural radiance and bring out your inner glow</p>
-            <button class="cta-button" onclick="scrollToProducts()">
+           <%-- <button class="cta-button" onclick="scrollToProducts()">
                 Shop Now
-            </button>
+            </button>--%>
+    <asp:Button ID="Button1" button class="cta-button" runat="server" Text="Shop Now" OnClick="Button1_Click" />
         </div>
         <div class="hero-image">
             <div class="hero-product">
@@ -190,7 +191,7 @@
 
     <!-- Products Section -->
     <section id="products" class="products">
-        <div class="container">
+       <%-- <div class="container">
             <h2>Our Products</h2>
             <div class="product-filters">
                 <button class="filter-btn active" data-category="all">
@@ -211,7 +212,7 @@
             </div>
             <div class="product-grid" id="productGrid">
                 <!-- Products will be dynamically loaded here -->
-            </div>
+            </div>--%>
         </div>
     </section>
 
@@ -246,15 +247,15 @@
                     <p class="more-text" id="aboutMoreText">
                         Founded with a passion for clean beauty, ElixBeauty partners with ethical suppliers and dermatologists to craft formulas that are both high-performing and gentle. From concept to creation, we obsess over textures, aromas, and results—so your daily rituals feel as luxurious as they are effective.
                     </p>
-                    <button type="button" class="read-more-btn" id="readMoreBtn" aria-expanded="false" aria-controls="aboutMoreText">
+                   <%-- <button type="button" class="read-more-btn" id="readMoreBtn" aria-expanded="false" aria-controls="aboutMoreText">
                         Read more
-                    </button>
+                    </button>--%>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop&crop=center" alt="Beauty Products">
                 </div>
             </div>
-            <div class="about-stats" id="aboutStats">
+           <%-- <div class="about-stats" id="aboutStats">
                 <div class="stat">
                     <span class="stat-number" data-target="10" data-suffix="+">0</span> <span class="stat-label">Years of Excellence</span>
                 </div>
@@ -267,7 +268,7 @@
                 <div class="stat">
                     <span class="stat-number" data-target="100" data-suffix="%">0</span> <span class="stat-label">Cruelty-Free</span>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </section>
 
@@ -424,4 +425,55 @@ textarea {
 
 </div>
 </asp:Content>
+
+<asp:Content ID="Content4" runat="server" contentplaceholderid="ContentPlaceHolder1">
+                
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ElixBeauty - Premium Cosmetics</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Header / Navigation -->
+        <header>
+            <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h2>ElixBeauty</h2>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="WebForm1.aspx" class="nav-link">Home</a></li>
+                       <%-- <li><a href="Products.aspx" class="nav-link">Products</a></li>--%>
+                        <li><a href="explore.aspx" class="nav-link">Explore</a></li>
+<%--                <li><a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a></li>--%>
+                        <li><a href="about.aspx" class="nav-link">About</a></li>
+                        <li><a href="contact.aspx" class="nav-link">Contact</a></li>
+                        <li><a href="login.aspx" class="nav-link">Login</a></li>
+                        <li><a href="registerruser.aspx" class="nav-link">Register</a></li>
+                    </ul>
+                    <div class="nav-actions">
+               <%-- <button class="btn-login" onclick="openModal('loginModal')">Login</button>--%>
+                <!-- Login Button -->
+<%--<button class="btn-login" onclick="window.location.href='login.aspx'">Login</button>
+
+<!-- Register Button -->
+<button class="btn-register" onclick="window.location.href='registerruser.aspx'">Register</button>--%>
+
+               <%-- <button class="btn-register" onclick="openModal('registerModal')">Register</button>--%>
+                        <div class="cart-icon" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+</asp:Content>
+
 

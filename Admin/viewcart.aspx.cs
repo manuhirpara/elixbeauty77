@@ -21,7 +21,22 @@ namespace elixbeauty7.Admin
         {
             if (!IsPostBack)
             {
+                ViewState["pid"] = 0;
                 fill_grid();
+            }
+            if (Session["admin"] != null && Session["admin"].ToString() != "")
+            {
+                getcon();
+                da = new SqlDataAdapter("SELECT * FROM registerr WHERE email = '" + Session["admin"].ToString() + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                string s = ds.Tables[0].Rows[0][1].ToString();
+
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
             }
 
         }
@@ -32,20 +47,6 @@ namespace elixbeauty7.Admin
         }
         void fill_grid()
         {
-            //getcon();
-            //da = new SqlDataAdapter("Select * from std_table where email ='" + Session["admin"] + "'", con);
-            //ds = new DataSet();
-            //da.Fill(ds);
-
-            //int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-
-            //da = new SqlDataAdapter("Select * from cart_tbl where User_Cart_Id = '" + uid + "'", con);
-            //ds = new DataSet();
-            //da.Fill(ds);
-            //gvCart.DataSource = ds;
-            //gvCart.DataBind();
-
-
             getcon();
             da = new SqlDataAdapter("Select * from registerr where email ='" + Session["admin"] + "'", con);
             ds = new DataSet();
@@ -54,21 +55,9 @@ namespace elixbeauty7.Admin
             if (ds.Tables[0].Rows.Count > 0)
             {
                 int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-                //da = new SqlDataAdapter("select *, (Price * Quantity) as Total from cart_tbl where User_Cart_Id = '" + uid + "'", con);
-                //    string query = @"
-                //SELECT *, 
-                //       (TRY_CAST(Price AS DECIMAL(10,2)) * TRY_CAST(Quantity AS INT)) AS Total 
-                //FROM cart_tbl 
-                //WHERE User_Cart_Id = @UserId";
-
-                //    da = new SqlDataAdapter(query, con);
-                //    da.SelectCommand.Parameters.AddWithValue("@UserId", uid);
-                //da = new SqlDataAdapter("SELECT *, (Prod_Price * Prod_Quantity) AS Total FROM cart_tbl WHERE User_Cart_Id = '" + uid + "'", con);
                 da = new SqlDataAdapter("SELECT *, (TRY_CAST(Price AS DECIMAL(10,2)) * Quantity) AS Total FROM cart_tbl WHERE User_Cart_Id = '" + uid + "'", con);
-
                 ds = new DataSet();
                 da.Fill(ds);
-
                 gvCart.DataSource = ds;
                 gvCart.DataBind();
 
@@ -98,7 +87,7 @@ namespace elixbeauty7.Admin
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]); // Fetch userID
+                int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]); 
 
                 foreach (GridViewRow row in gvCart.Rows)
                 {
@@ -106,12 +95,9 @@ namespace elixbeauty7.Admin
                     {
                         int prodCartId = Convert.ToInt32(gvCart.DataKeys[row.RowIndex].Value);
                         TextBox txtQty = (TextBox)row.FindControl("txtQuantity");
-
                         int quantity = 1;
                         int.TryParse(txtQty.Text, out quantity);
                         if (quantity < 1) quantity = 1;
-
-                        // ✅ Update cart quantity using your string SQL syntax
                         cmd = new SqlCommand("Update cart_tbl SET Quantity = '" + quantity + "' where User_Cart_Id = '" + uid + "' AND Prod_cart_Id = '" + prodCartId + "'", con);
                         cmd.ExecuteNonQuery();
                     }
@@ -136,8 +122,6 @@ namespace elixbeauty7.Admin
                 {
                     int uid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                     int ProdcartId = Convert.ToInt32(e.CommandArgument);
-
-                    // ✅ Delete record (no syntax change)
                     cmd = new SqlCommand("Delete from cart_tbl where Prod_cart_Id = '" + ProdcartId + "' AND User_Cart_Id = '" + uid + "'", con);
                     cmd.ExecuteNonQuery();
 

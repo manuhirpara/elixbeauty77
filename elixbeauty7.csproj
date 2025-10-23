@@ -69,13 +69,11 @@
   <ItemGroup>
     <Content Include="about.aspx" />
     <Content Include="Admin\AddCatagory.aspx" />
-    <Content Include="Admin\Addproduct.aspx" />
     <Content Include="Admin\Admincart.aspx" />
     <Content Include="Admin\Adminsettings.aspx" />
     <Content Include="Admin\Admintest-Products.aspx" />
     <Content Include="Admin\Admincontact.aspx" />
     <Content Include="Admin\Admindashboard.aspx" />
-    <Content Include="Admin\Adminflow-test.aspx" />
     <Content Include="Admin\Adminlogin.aspx" />
     <Content Include="Admin\Adminproducts.aspx" />
     <Content Include="Admin\AdminRegister.aspx" />
@@ -114,13 +112,6 @@
     <Compile Include="Admin\AddCatagory.aspx.designer.cs">
       <DependentUpon>AddCatagory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Addproduct.aspx.cs">
-      <DependentUpon>Addproduct.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Addproduct.aspx.designer.cs">
-      <DependentUpon>Addproduct.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Admincart.aspx.cs">
       <DependentUpon>Admincart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,13 +132,6 @@
     </Compile>
     <Compile Include="Admin\Admindashboard.aspx.designer.cs">
       <DependentUpon>Admindashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Adminflow-test.aspx.cs">
-      <DependentUpon>Adminflow-test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Adminflow-test.aspx.designer.cs">
-      <DependentUpon>Adminflow-test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Adminlogin.aspx.cs">
       <DependentUpon>Adminlogin.aspx</DependentUpon>

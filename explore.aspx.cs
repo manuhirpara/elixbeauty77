@@ -173,6 +173,7 @@ namespace elixbeauty7
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
+            getcon();
             da = new SqlDataAdapter("SELECT * FROM Add_productt", con);
             ds = new DataSet();
             da.Fill(ds);
@@ -182,6 +183,7 @@ namespace elixbeauty7
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            getcon();
             da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'MAC cosmetic'", con);
             ds = new DataSet();
             da.Fill(ds);
@@ -191,6 +193,7 @@ namespace elixbeauty7
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            getcon();
             da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'mamaearth'", con);
             ds = new DataSet();
             da.Fill(ds);
@@ -200,6 +203,7 @@ namespace elixbeauty7
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            getcon();
             da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'sugar cosmetic'", con);
             ds = new DataSet();
             da.Fill(ds);
@@ -209,6 +213,7 @@ namespace elixbeauty7
 
         protected void Button5_Click(object sender, EventArgs e)
         {
+            getcon();
             da = new SqlDataAdapter("SELECT * FROM Add_productt WHERE Catagory = 'Nykaa'", con);
             ds = new DataSet();
             da.Fill(ds);
