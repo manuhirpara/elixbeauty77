@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Adminproducts.aspx">
+                    <a href="ProductsAdmin.aspx">
                         <i class="fas fa-box"></i>
                         <span>Products</span>
                     </a>

@@ -21,7 +21,7 @@
             <nav class="sidebar-nav">
                 <ul>
                     <li class="active"><a href="Admindashboard.aspx"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span> </a></li>
-                    <li><a href="Adminproducts.aspx"><i class="fas fa-box"></i><span>Products</span> </a></li>
+                    <li><a href="ProductsAdmin.aspx"><i class="fas fa-box"></i><span>Products</span> </a></li>
                     <li><a href="Adminusers.aspx"><i class="fas fa-users"></i><span>Users</span> </a></li>
                     <li><a href="Admincart.html"><i class="fas fa-shopping-cart"></i><span>Cart</span> </a></li>
                     <li><a href="Admincontact.aspx"><i class="fas fa-envelope"></i><span>Contact</span> </a></li>

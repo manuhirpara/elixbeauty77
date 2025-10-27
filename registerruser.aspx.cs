@@ -33,33 +33,16 @@ namespace elixbeauty7
             txtnm.Text = " ";
             txtpass.Text = " ";
         }
-        //void imgupload()
-        //{
-        //    if (flpimg.HasFile)
-        //    {
-        //        // Generate unique filename to avoid conflicts
-        //        string fileName = flpimg.FileName;
-        //        string fileExtension = System.IO.Path.GetExtension(fileName);
-        //        string uniqueFileName = DateTime.Now.Ticks + "_" + fileName;
-
-        //        fnm = "images/" + uniqueFileName;
-        //        flpimg.SaveAs(Server.MapPath(fnm));
-        //    }
-        //    else
-        //    {
-        //        fnm = ""; // Set empty string if no file is selected
-        //    }
-        //}
+       
         void imgupload()
         {
-            if (flpimg.HasFile)
+           
+            if (fldimg.HasFile)
             {
-                fnm = "..//images/" + flpimg.FileName;
-                //Response.Write(Server.MapPath(fnm));
-                //fldimg.SaveAs(Server.MapPath(fnm));
-                //Response.Write("<script>alert('"+fnm+"')</script>");
-                flpimg.SaveAs(Server.MapPath(fnm));
+                fnm = "~/images/" + fldimg.FileName;
+                fldimg.SaveAs(Server.MapPath(fnm));
             }
+        
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -92,7 +75,7 @@ namespace elixbeauty7
             if (Button1.Text == "Register")
             {
                 getcon();
-
+                imgupload();
                 cmd = new SqlCommand("insert into registerr(UserName,Password,Name,Image,Gender,Email) Values ('" + txtunm.Text + "','" + txtpass.Text + "','" + txtnm.Text + "','" + fnm + "','" + rdbgrn.Text + "','" + txteml.Text + "')", con);
                 cmd.ExecuteNonQuery();
                 clear();

@@ -107,7 +107,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Adminproducts.aspx">
+                    <a href="ProductsAdmin.aspx">
                         <i class="fas fa-box"></i>
                         <span>Products</span>
                     </a>
@@ -153,10 +153,10 @@
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search users..." id="userSearch">
                 </div>
-                <button class="btn btn-primary" onclick="openAddUserModal()">
+               <%-- <button class="btn btn-primary" onclick="openAddUserModal()">
                     <i class="fas fa-user-plus"></i>
                     Add User
-                </button>
+                </button>--%>
             </div>
         </header>
 
@@ -439,11 +439,9 @@
     </asp:TemplateField>
     <asp:TemplateField HeaderText="Image">
         <ItemTemplate>
-           <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Image") %>' />
-               <%-- ImageUrl='<%# GetImageUrl(Eval("Image")) %>' 
-                Width="40" Height="40" 
-                style="border-radius: 50%; object-fit: cover;" 
-                onerror="this.src='images/download.jpeg';" />--%>
+          <%-- <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Image") %>' />--%>
+                           <img src='<%# ResolveUrl("~/images/" + System.IO.Path.GetFileName(Eval("Image").ToString())) %>'  />
+              
         </ItemTemplate>
     </asp:TemplateField>
     <asp:TemplateField HeaderText="Gender">

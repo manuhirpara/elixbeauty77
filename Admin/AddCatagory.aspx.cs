@@ -24,25 +24,25 @@ namespace elixbeauty7.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             getcon();
-            if (!IsPostBack)
-            {
-                ViewState["pid"] = 0;
+            //if (!IsPostBack)
+            //{
+            //    ViewState["pid"] = 0;
 
-            }
-            if (Session["admin"] != null && Session["admin"].ToString() != "")
-            {
-                getcon();
-                da = new SqlDataAdapter("SELECT * FROM AdminRegister WHERE email = '" + Session["admin"].ToString() + "'", con);
-                ds = new DataSet();
-                da.Fill(ds);
-                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-                string s = ds.Tables[0].Rows[0][1].ToString();
+            //}
+            //if (Session["admin"] != null && Session["admin"].ToString() != "")
+            //{
+            //    getcon();
+            //    da = new SqlDataAdapter("SELECT * FROM AdminRegister WHERE email = '" + Session["admin"].ToString() + "'", con);
+            //    ds = new DataSet();
+            //    da.Fill(ds);
+            //    int id = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+            //    string s = ds.Tables[0].Rows[0][1].ToString();
 
-            }
-            else
-            {
-                Response.Redirect("Adminlogin.aspx");
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("Adminlogin.aspx");
+            //}
         }
         void getcon()
         {

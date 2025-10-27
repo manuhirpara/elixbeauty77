@@ -71,7 +71,6 @@
     <Content Include="Admin\AddCatagory.aspx" />
     <Content Include="Admin\Admincart.aspx" />
     <Content Include="Admin\Adminsettings.aspx" />
-    <Content Include="Admin\Admintest-Products.aspx" />
     <Content Include="Admin\Admincontact.aspx" />
     <Content Include="Admin\Admindashboard.aspx" />
     <Content Include="Admin\Adminlogin.aspx" />
@@ -160,13 +159,6 @@
     </Compile>
     <Compile Include="Admin\Adminsettings.aspx.designer.cs">
       <DependentUpon>Adminsettings.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Admintest-Products.aspx.cs">
-      <DependentUpon>Admintest-Products.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Admintest-Products.aspx.designer.cs">
-      <DependentUpon>Admintest-Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Adminusers.aspx.cs">
       <DependentUpon>Adminusers.aspx</DependentUpon>

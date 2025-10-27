@@ -395,7 +395,7 @@
             <tr>
                 <td>
                     <asp:Label ID="Label3" runat="server" Text="Image"></asp:Label><br />
-                    <asp:FileUpload ID="flpimg" runat="server" Placeholder="Enter Your Image" />
+                    <asp:FileUpload ID="fldimg" ImageUrl='<%# Eval("Image") %>' runat="server"/>
 
                 </td>
             </tr>
@@ -426,6 +426,64 @@
     </span>
 </div>
 </asp:Content>
+
+
+
+
+
+
+
+
+<asp:Content ID="Content5" runat="server" contentplaceholderid="ContentPlaceHolder1">
+                
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ElixBeauty - Premium Cosmetics</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Header / Navigation -->
+        <header>
+            <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h2>ElixBeauty</h2>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="WebForm1.aspx" class="nav-link">Home</a></li>
+                      
+                        <li><a href="explore.aspx" class="nav-link">Explore</a></li>
+<%--                <li><a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a></li>--%>
+                        <li><a href="about.aspx" class="nav-link">About</a></li>
+                        <li><a href="contact.aspx" class="nav-link">Contact</a></li>
+                        <li><a href="login.aspx" class="nav-link">Login</a></li>
+                        <li><a href="registerruser.aspx" class="nav-link">Register</a></li>
+                    </ul>
+                    <div class="nav-actions">
+               <%-- <button class="btn-login" onclick="openModal('loginModal')">Login</button>--%>
+                <!-- Login Button -->
+<%--<button class="btn-login" onclick="window.location.href='login.aspx'">Login</button>
+
+<!-- Register Button -->
+<button class="btn-register" onclick="window.location.href='registerruser.aspx'">Register</button>--%>
+
+               <%-- <button class="btn-register" onclick="openModal('registerModal')">Register</button>--%>
+                        <div class="cart-icon" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+</asp:Content>
+
 
 
 
